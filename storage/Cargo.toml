@@ -58,6 +58,7 @@ regex = "1.7.0"
 toml = "0.5"
 
 [features]
+default = ["encryption-vendored"]
 backend-localdisk = []
 backend-localdisk-gpt = ["gpt", "backend-localdisk"]
 backend-localfs = []
@@ -66,6 +67,7 @@ backend-registry = ["base64", "reqwest", "url"]
 backend-s3 = ["base64", "hmac", "http", "reqwest", "sha2", "time", "url"]
 backend-http-proxy = ["hyper", "hyperlocal", "http", "reqwest", "url"]
 dedup = ["rusqlite", "r2d2", "r2d2_sqlite"]
+encryption-vendored = ["nydus-utils/encryption-vendored"]
 prefetch-rate-limit = ["leaky-bucket"]
 
 [package.metadata.docs.rs]

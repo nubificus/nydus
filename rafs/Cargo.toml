@@ -26,7 +26,7 @@ nydus-api = { version = "0.3", path = "../api" }
 nydus-storage = { version = "0.6", path = "../storage", features = [
     "backend-localfs",
     "dedup",
-] }
+], default-features = false }
 nydus-utils = { version = "0.4", path = "../utils" }
 
 [dev-dependencies]
@@ -34,6 +34,8 @@ vmm-sys-util = "0.11"
 assert_matches = "1.5.0"
 
 [features]
+default = ["encryption-vendored"]
+encryption-vendored = ["nydus-utils/encryption-vendored"]
 fusedev = ["fuse-backend-rs/fusedev"]
 virtio-fs = ["fuse-backend-rs/virtiofs", "vm-memory/backend-mmap"]
 vhost-user-fs = ["fuse-backend-rs/vhost-user-fs"]

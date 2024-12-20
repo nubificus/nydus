@@ -53,7 +53,7 @@ tar = "0.4.40"
 tokio = { version = "1.35.1", features = ["macros"] }
 
 # Build static linked openssl library
-openssl = { version = "0.10.55", features = ["vendored"] }
+#openssl = { version = "0.10.55" }
 # pin openssl-src to bring in fix for https://rustsec.org/advisories/RUSTSEC-2022-0032
 #openssl-src = { version = "111.22" }
 
@@ -62,13 +62,15 @@ nydus-api = { version = "0.3.0", path = "api", features = [
     "handler",
 ] }
 nydus-builder = { version = "0.1.0", path = "builder" }
-nydus-rafs = { version = "0.3.1", path = "rafs" }
+nydus-rafs = { version = "0.3.1", path = "rafs", default-features = false }
 nydus-service = { version = "0.3.0", path = "service", features = [
+    "fusedev",
     "block-device",
-] }
+], default-features = false }
 nydus-storage = { version = "0.6.3", path = "storage", features = [
+    "dedup",
     "prefetch-rate-limit",
-] }
+], default-features = false }
 nydus-utils = { version = "0.4.2", path = "utils" }
 
 vhost = { version = "0.6.0", features = ["vhost-user-slave"], optional = true }
@@ -89,14 +91,21 @@ vmm-sys-util = "0.11.0"
 
 [features]
 default = [
-    "fuse-backend-rs/fusedev",
+    "fusedev",
     "backend-registry",
     "backend-oss",
     "backend-s3",
     "backend-http-proxy",
     "backend-localdisk",
     "dedup",
+    "encryption-vendored",
 ]
+encryption-vendored = [
+    "nydus-rafs/encryption-vendored",
+    "nydus-service/encryption-vendored",
+    "nydus-storage/encryption-vendored",
+]
+fusedev = ["fuse-backend-rs/fusedev"]
 virtiofs = [
     "nydus-service/virtiofs",
     "vhost",
