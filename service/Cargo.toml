@@ -47,7 +47,12 @@ tokio-uring = "0.4"
 vmm-sys-util = "0.11.0"
 
 [features]
-default = ["fuse-backend-rs/fusedev"]
+default = ["fusedev"]
+encryption-vendored = [
+    "nydus-rafs/encryption-vendored",
+    "nydus-storage/encryption-vendored",
+]
+fusedev = ["fuse-backend-rs/fusedev"]
 virtiofs = [
     "fuse-backend-rs/vhost-user-fs",
     "vm-memory",

@@ -66,6 +66,7 @@ backend-registry = ["base64", "reqwest", "url"]
 backend-s3 = ["base64", "hmac", "http", "reqwest", "sha2", "time", "url"]
 backend-http-proxy = ["hyper", "hyperlocal", "http", "reqwest", "url"]
 dedup = ["rusqlite", "r2d2", "r2d2_sqlite"]
+encryption-vendored = ["nydus-utils/encryption-vendored"]
 prefetch-rate-limit = ["leaky-bucket"]
 
 [package.metadata.docs.rs]

@@ -52,11 +52,6 @@ serde_json = "1.0.51"
 tar = "0.4.40"
 tokio = { version = "1.35.1", features = ["macros"] }
 
-# Build static linked openssl library
-openssl = { version = "0.10.55", features = ["vendored"] }
-# pin openssl-src to bring in fix for https://rustsec.org/advisories/RUSTSEC-2022-0032
-#openssl-src = { version = "111.22" }
-
 nydus-api = { version = "0.3.0", path = "api", features = [
     "error-backtrace",
     "handler",
@@ -89,7 +84,7 @@ vmm-sys-util = "0.11.0"
 
 [features]
 default = [
-    "fuse-backend-rs/fusedev",
+    "fusedev",
     "backend-registry",
     "backend-oss",
     "backend-s3",
@@ -97,6 +92,12 @@ default = [
     "backend-localdisk",
     "dedup",
 ]
+encryption-vendored = [
+    "nydus-rafs/encryption-vendored",
+    "nydus-service/encryption-vendored",
+    "nydus-storage/encryption-vendored",
+]
+fusedev = ["fuse-backend-rs/fusedev"]
 virtiofs = [
     "nydus-service/virtiofs",
     "vhost",

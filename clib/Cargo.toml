@@ -26,3 +26,7 @@ backend-oss = ["nydus-storage/backend-oss"]
 backend-registry = ["nydus-storage/backend-registry"]
 backend-http-proxy = ["nydus-storage/backend-http-proxy"]
 backend-localdisk = ["nydus-storage/backend-localdisk"]
+encryption-vendored = [
+    "nydus-storage/encryption-vendored",
+    "nydus-rafs/encryption-vendored",
+]
